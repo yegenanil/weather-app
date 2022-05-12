@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.main-container {
+    background: #114357;
+    background: -webkit-linear-gradient(to right, #F29492, #114357);
+    background: linear-gradient(to right, #F29492, #114357);
+}
+
+.form-container {
+    background: url('./assets/img.jpg') no-repeat 50% 40% /cover;
+    height: auto;
+    @apply w-2/4 p-5 rounded-2xl
+}
+
+.header-container {
+    display: flex;
+    margin-left: 47%;
+}
+
+.input {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    top: 55.5%;
+    left: 32.6%;
+
+    @media(max-width: 855px) {
+        display: none;
+    }
+}
