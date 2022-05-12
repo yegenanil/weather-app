@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import DetailCard from './components/DetailCard';
 import Header from './components/Header';
 import SummaryCard from './components/SummaryCard';
@@ -17,22 +17,20 @@ function App() {
     setSearch(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    getWeather(search);
-    setSearch('');
+    await getWeather(search);
   }
 
   const getWeather = async (location) => {
-    let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_KEY}`)
+    let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_KEY}&units=metric&cnt=5`)
     let data = await res.json();
-    if (data.cod != 200) {
+    if (data.cod !== "200") {
       setNoData('Location Not Found')
       return
     }
 
-    console.log(data)
-
+    setWeatherData(data);
     setCity(`${data.city.name}, ${data.city.country}`);
     setWeatherIcon(`${process.env.REACT_APP_ICON_URL + data.list[0].weather[0]["icon"]}@4x.png`);
   }
@@ -61,9 +59,8 @@ function App() {
                 value={search}
                 required
               />
-              <button type="submit" className='z-10'>
-                <i className='search-icon fa fa-search text-white ml-10 border-1 my-auto z-10 cursor-pointer p-3'></i>
-              </button>
+              <button type="submit" className='z-10' />                
+              
             </form>
           </div>
         </div>
@@ -80,9 +77,9 @@ function App() {
                 <DetailCard weather_icon={weatherIcon} data={weatherData} />
                 <h1 className='text-3xl text-gray-600 mb-4 mt-10'>More on {city}</h1>
                 <ul className='grid grid-cols-2 gap-2'>
-                  {weatherData.list.map((days, index) => {
+                  {weatherData.list.map((day, index) => {
                     if (index > 0) {
-                      return (<SummaryCard key={index} day={days} />)
+                      return (<SummaryCard key={index} day={day} />)
                     }
                   })}
                 </ul>
