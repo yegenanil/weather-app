@@ -3,7 +3,7 @@ import React from 'react'
 
 const DetailCard = ({ weather_icon, data }) => {
 
-    const { clouds, main, weather } = data.list[0];
+    const { clouds, main, weather } = data.list[0];    
 
     return (
         <div className='container p-4 flex items-center justify-center shadow-lg rounded-lg bg-white h-1/3 mb-auto'>
@@ -16,7 +16,7 @@ const DetailCard = ({ weather_icon, data }) => {
                 <p className='text-gray-400 text-xs uppercase tracking-widest'>
                     {weather[0].description}
                 </p>
-                <p className='tracking-wider'>{moment().format("dddd MMM YYYY")}</p>            
+                <p className='tracking-wider'>{moment().format("dddd MMM YYYY")}</p>
             </div>
             <div className='my-2 border-1-2 border-gray-100 p-2'>
                 <p className='text-gray-400 text-lg'>ReelFeel: {Math.round(main.feels_like)}&deg;C</p>

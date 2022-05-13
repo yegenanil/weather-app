@@ -20,7 +20,8 @@ h1 {
 }
 
 .form-container {
-    background: url('./assets/img.jpg') no-repeat 50% 40% /cover;
+    /* background: url('./assets/img.jpg') no-repeat 50% 40% /cover; */
+    background-size: cover;
     height: auto;
     @apply w-2/4 p-5 rounded-2xl
 }

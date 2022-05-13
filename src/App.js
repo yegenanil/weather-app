@@ -3,7 +3,6 @@ import DetailCard from './components/DetailCard';
 import Header from './components/Header';
 import SummaryCard from './components/SummaryCard';
 
-
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -29,17 +28,16 @@ function App() {
       setNoData('Location Not Found')
       return
     }
-
     setWeatherData(data);
     setCity(`${data.city.name}, ${data.city.country}`);
     setWeatherIcon(`${process.env.REACT_APP_ICON_URL + data.list[0].weather[0]["icon"]}@4x.png`);
-  }
+  }    
 
   return (
     <div className="main-container  flex items-center justify-center w-screen h-screen py-10">
       <div className='flex w-3/4 min-h-full rounded-3xl shadow-lg m-auto bg-gray-100'>
-        <div className='form-container'>
-          <div className='flex items-center justify-center'>
+        <div className='form-container bg-cloud'>
+          <div className='flex items-center justify-center'>  
             <h3 className='my-auto mr-auto text-xl text-pink-800 font-bold shadow-md py-1 px-3 rounded-md bg-white bg-opacity-30'>
               Forecast</h3>
             <div className='flex p-2 text-gray-100 bg-gray-600 bg-opacity-30 rounded-lg'>
@@ -59,8 +57,8 @@ function App() {
                 value={search}
                 required
               />
-              <button type="submit" className='z-10' />                
-              
+              <button type="submit" className='z-10' />
+
             </form>
           </div>
         </div>
@@ -88,8 +86,8 @@ function App() {
           </div>
         </div>
 
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 
