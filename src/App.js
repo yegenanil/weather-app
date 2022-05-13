@@ -22,7 +22,7 @@ function App() {
   }
 
   const getWeather = async (location) => {
-    let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_KEY}&units=metric&cnt=5`)
+    let res = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_KEY}&units=metric&cnt=5`)
     let data = await res.json();
     if (data.cod !== "200") {
       setNoData('Location Not Found')
