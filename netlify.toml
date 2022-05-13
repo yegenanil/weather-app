@@ -1,5 +1,0 @@
-[[redirects]]
-    from = "https://weatherygn.netlify.app/"
-    to = "https://api.openweathermap.org/:splat"
-    status = 200
-    force = true
