@@ -19,6 +19,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await getWeather(search);
+    setSearch('');
   }
 
   let iconUrl = "https://openweathermap.org/img/wn/";
