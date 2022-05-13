@@ -2,7 +2,9 @@ import moment from "moment";
 
 const SummaryCard = ({ day }) => {
     const weather = day.weather[0];
-    const dayIcon = `${process.env.REACT_APP_ICON_URL + weather["icon"]}@2x.png`
+    let iconUrl = "https://openweathermap.org/img/wn/";
+    const dayIcon = `${iconUrl + weather["icon"]}@2x.png`
+    
     return (
         <li className="container p-4 flex items-center justify-center bg-gray-200 rounded-xl my-auto mr-1">
             <div className="my-auto">

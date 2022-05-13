@@ -10,7 +10,7 @@ function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [search, setSearch] = useState('')
   const [city, setCity] = useState('Unknown location');
-  const [weatherIcon, setWeatherIcon] = useState(`${process.env.REACT_APP_ICON_URL}10n@2x.png`);
+  const [weatherIcon, setWeatherIcon] = useState(`https://openweathermap.org/img/wn/10n@2x.png`);
 
   const handleChange = (e) => {
     setSearch(e.target.value)
@@ -21,6 +21,8 @@ function App() {
     await getWeather(search);
   }
 
+  let iconUrl = "https://openweathermap.org/img/wn/";
+
   const getWeather = async (location) => {
     let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_KEY}&units=metric&cnt=5`)
     let data = await res.json();
@@ -30,8 +32,10 @@ function App() {
     }
     setWeatherData(data);
     setCity(`${data.city.name}, ${data.city.country}`);
-    setWeatherIcon(`${process.env.REACT_APP_ICON_URL + data.list[0].weather[0]["icon"]}@4x.png`);
+    setWeatherIcon(`${iconUrl + data.list[0].weather[0]["icon"]}@4x.png`);
   }
+
+  
 
   return (
     <div className="main-container  flex items-center justify-center w-screen h-screen py-10">
