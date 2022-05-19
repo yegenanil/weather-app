@@ -7,7 +7,7 @@ Hosted
 https://weatherygn.netlify.app/
 
 Technologies used
-Reactjs, momentjs, tailwindcss
+Reactjs, Tailwind CSS
 
 # How to install
 
