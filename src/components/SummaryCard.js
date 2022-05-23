@@ -1,14 +1,14 @@
-import moment from "moment";
+import * as dayjs from 'dayjs';
 
 const SummaryCard = ({ day }) => {
     const weather = day.weather[0];
     let iconUrl = "https://openweathermap.org/img/wn/";
-    const dayIcon = `${iconUrl + weather["icon"]}@2x.png`
+    const dayIcon = `${iconUrl + weather["icon"]}@2x.png`;
     
     return (
-        <li className="container p-4 flex items-center justify-center bg-gray-200 rounded-xl my-auto mr-1">
+        <li className="container p-4 flex items-start justify-start bg-white shadow-xl rounded-xl my-auto mr-1">
             <div className="my-auto">
-                <p className="font-bold text-3xl text-pink-600 mb-2">{Math.round(day.main.temp)}&deg;C</p>
+                <p className="font-bold text-3xl text-gray-600 mb-2">{Math.round(day.main.temp)}&deg;C</p>
                 <p className="text-2xl text-gray-800 tracking-widest">
                     {weather.main}
                     <img src={dayIcon} className="w-1/4 inline" />
@@ -16,7 +16,7 @@ const SummaryCard = ({ day }) => {
                 <p className="text-gray-400 text-xs uppercase tracking-widest">
                     {weather.description}
                 </p>
-                <p className="trackig-wider">{moment(day.dt_txt).format('dddd hh:mm')}am</p>
+                <p className="trackig-wider">{dayjs(day.dt_txt).format('dddd hh:mm')}am</p>
             </div>
         </li>
     )

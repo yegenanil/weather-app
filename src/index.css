@@ -19,10 +19,15 @@ h1 {
     background: linear-gradient(to right, #F29492, #114357);
 }
 
+.forecast-container {
+    min-height: 838.22px;
+}
+
 .form-container {
-    /* background: url('./assets/img.jpg') no-repeat 50% 40% /cover; */
     background-size: cover;
     height: auto;
+    -webkit-transition: background-image 1s ease-in-out;
+    transition: background-image 1s linear;
     @apply w-2/4 p-5 rounded-2xl
 }
 
