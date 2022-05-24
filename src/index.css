@@ -7,6 +7,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+    
 }
 
 h1 {
@@ -16,7 +17,7 @@ h1 {
 .main-container {
     background: #114357;
     background: -webkit-linear-gradient(to right, #F29492, #114357);
-    background: linear-gradient(to right, #F29492, #114357);
+    background: linear-gradient(to right, #F29492, #114357);       
 }
 
 .forecast-container {
@@ -28,7 +29,31 @@ h1 {
     height: auto;
     -webkit-transition: background-image 1s ease-in-out;
     transition: background-image 1s linear;
+    transition: width 1s;
+    transition: all 1s;
     @apply w-2/4 p-5 rounded-2xl
+}
+
+
+.form-container.show {
+    width: 100%;
+    transition: all 1s;
+}
+
+.data-show {
+    transition: all 1s;
+    opacity: 1;
+    transition: opacity 1s;
+    padding: 20px;
+    min-width: 720px;
+}
+
+.data-show.hide {
+    transition: all 1s;
+    opacity: 0;
+    width: 0;
+    padding: 0;
+    min-width: 0;
 }
 
 .header-container {

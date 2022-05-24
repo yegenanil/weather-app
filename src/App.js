@@ -23,10 +23,25 @@ function App() {
     if (data.cod !== "200") {
       const locationErrorDiv = document.querySelector('.location-error');
       locationErrorDiv.classList.remove('opacity-0');
+
+      const formContainerFullScreen = document.querySelector('.form-container');
+      formContainerFullScreen.classList.add('show');
+
+      const dataContaninerHide = document.querySelector('.data-show');
+      dataContaninerHide.classList.add('hide');
+
       setTimeout(() => {
         locationErrorDiv.classList.add('opacity-0');
       }, 2500);
       return;
+    }
+
+    if (data.cod === '200') {
+      const formContainerFullScreen = document.querySelector('.form-container');
+      formContainerFullScreen.classList.remove('show');
+
+      const dataContaninerHide = document.querySelector('.data-show');
+      dataContaninerHide.classList.remove('hide');
     }
 
     setWeatherData(data);
@@ -36,6 +51,15 @@ function App() {
   const getWeatherDataLocation = async (lat, lon) => {
     let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=4&appid=${API_KEY}&units=metric`);
     let data = await res.json();
+
+    if (data.cod === '200') {
+      const hideScreen = document.querySelector('.form-container');
+      hideScreen.classList.remove('show');
+
+      const hideOtherScreen = document.querySelector('.data-show');
+      hideOtherScreen.classList.remove('hide');
+    }
+
     setWeatherData(data);
     setbgImgClassName(data.list[0].weather[0].main);
   }
@@ -59,10 +83,11 @@ function App() {
       break;
   }
 
+  
   return (
     <div className="main-container  flex items-center justify-center max-w-screen min-h-screen py-10">
       <div className='forecast-container flex w-3/4 rounded-3xl shadow-lg bg-gray-100'>
-        <div className={`form-container ${bgImgClassName}`}>
+        <div className={`form-container show  ${bgImgClassName}`}>
           <div className='flex items-center justify-center'>
             <h3 className='my-auto mr-auto text-xl text-white font-bold shadow-md py-1 px-3 rounded-md bg-white bg-opacity-30'>
               Forecast</h3>
@@ -88,7 +113,7 @@ function App() {
             <p className='location-error flex items-center transition-all font-bold text-xl drop-shadow-sm justify-center mt-6 text-red-600 opacity-0'>Location not found</p>
           </div>
         </div>
-        <div className='w-2/4 p-5'>
+        <div className='data-show hide  w-2/4 p-5'>
           <div className='flex flex-col'>
             {weatherData &&
               <>
