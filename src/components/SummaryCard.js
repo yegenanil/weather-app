@@ -3,7 +3,7 @@ import getIconUrl from '../utils/IconUrl';
 
 const SummaryCard = ({ day }) => {
     const weather = day.weather[0];
-    const dayIcon = getIconUrl(weather["icon"])
+    const dayIcon = getIconUrl(weather["icon"]);
     
     return (
         <li className="container p-4 flex items-start justify-start bg-white shadow-xl rounded-xl my-auto mr-1">

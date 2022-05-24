@@ -37,22 +37,26 @@ function App() {
     let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=4&appid=${API_KEY}&units=metric`);
     let data = await res.json();
     setWeatherData(data);
+    setbgImgClassName(data.list[0].weather[0].main);
   }
 
   useEffect(() => {
     latitude && longitude && getWeatherDataLocation(latitude, longitude);
   }, [latitude, longitude]);
 
-  if (bgImgClassName === 'Clouds') {
-    setbgImgClassName('bg-cloud')
-  } else if (bgImgClassName === 'Rain') {
-    setbgImgClassName('bg-rain')
-  } else if (bgImgClassName === '') {
-    setbgImgClassName('')
-  } else if (bgImgClassName === 'Clear') {
-    setbgImgClassName('bg-clear')
-  } else if (bgImgClassName === 'Sun') {
-    setbgImgClassName('bg-sun')
+  switch (bgImgClassName) {
+    case 'Clouds':
+      setbgImgClassName('bg-cloud')
+      break;
+    case 'Rain':
+      setbgImgClassName('bg-rain')
+      break;
+    case 'Clear':
+      setbgImgClassName('bg-clear')
+      break;
+    case 'Sun':
+      setbgImgClassName('bg-sun')
+      break;
   }
 
   return (
