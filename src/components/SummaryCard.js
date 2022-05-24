@@ -1,9 +1,9 @@
 import * as dayjs from 'dayjs';
+import getIconUrl from '../utils/IconUrl';
 
 const SummaryCard = ({ day }) => {
     const weather = day.weather[0];
-    let iconUrl = "https://openweathermap.org/img/wn/";
-    const dayIcon = `${iconUrl + weather["icon"]}@2x.png`;
+    const dayIcon = getIconUrl(weather["icon"])
     
     return (
         <li className="container p-4 flex items-start justify-start bg-white shadow-xl rounded-xl my-auto mr-1">

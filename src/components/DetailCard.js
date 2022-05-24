@@ -1,19 +1,22 @@
 import * as dayjs from 'dayjs';
+import getIconUrl from '../utils/IconUrl';
 
-const DetailCard = ({ weather_icon, data }) => {
+const DetailCard = ({ data }) => {
 
-    const { clouds, main, weather } = data.list[0];    
+    const { clouds, main } = data.list[0];    
+    const weather = data.list[0].weather[0];
+    const weatherIcon = getIconUrl(weather["icon"])
 
     return (
         <div className='container p-4 grid grid-cols-2 divide-x divide-gray-400 items-start shadow-2xl rounded-lg bg-white h-1/3 mb-auto'>
             <div className='my-auto'>
                 <p className='font-bol text-5xl text-gray-600 mb-2'>{Math.round(main.temp)}&deg;C</p>
                 <p className='text-4xl text-gray-800 tracking-widest'>
-                    {weather[0].main}
-                    <img src={weather_icon} className="w-1/4 inline" />
+                    {weather.main}
+                    <img src={weatherIcon} className="w-1/4 inline" alt='' />
                 </p>
                 <p className='text-gray-400 text-xs uppercase tracking-widest'>
-                    {weather[0].description}
+                    {weather.description}
                 </p>
                 <p className='tracking-wider'>{dayjs().format("dddd MMM YYYY")}</p>
             </div>
