@@ -7,7 +7,7 @@ const DetailCard = ({ data }) => {
     const weatherIcon = getIconUrl(weather["icon"]);
 
     return (
-        <div className='container p-4 grid grid-cols-2 divide-x divide-gray-400 items-start shadow-2xl rounded-lg bg-white h-1/3 mb-auto'>
+        <div className='container p-4 grid grid-cols-2 sm:grid-cols-2 divide-x xs:grid-cols-1 divide-gray-400 items-start shadow-2xl rounded-lg bg-white h-1/3 mb-auto'>
             <div className='my-auto'>
                 <p className='font-bol text-5xl text-gray-600 mb-2'>{Math.round(main.temp)}&deg;C</p>
                 <p className='text-4xl text-gray-800 tracking-widest'>
