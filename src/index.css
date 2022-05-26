@@ -7,7 +7,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    
+
 }
 
 h1 {
@@ -17,15 +17,11 @@ h1 {
 .main-container {
     background: #114357;
     background: -webkit-linear-gradient(to right, #F29492, #114357);
-    background: linear-gradient(to right, #F29492, #114357);       
+    background: linear-gradient(to right, #F29492, #114357);
 }
 
 .forecast-container {
-    min-height: 838.22px;
-
-    @media (max-width: 768) {
-
-    }
+    min-height: 80vh;
 }
 
 .form-container {
@@ -68,5 +64,5 @@ h1 {
 
 .input {
     position: relative;
-     width: 40%;
+    width: 40%;
 }

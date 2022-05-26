@@ -10,7 +10,6 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [search, setSearch] = useState('');
   const [bgImgClassName, setBgImgClassName] = useState('');
-
   const dataContaniner = document.querySelector('.data-container');
 
   const handleSubmit = async (e) => {
@@ -21,7 +20,7 @@ function App() {
   const handleLayoutChanges = (data) => {
     if (data.cod !== "200") {
       const locationErrorDiv = document.querySelector('.location-error');
-      locationErrorDiv.classList.remove('opacity-0');      
+      locationErrorDiv.classList.remove('opacity-0');
 
       setTimeout(() => {
         locationErrorDiv.classList.add('opacity-0');
@@ -29,8 +28,9 @@ function App() {
       return;
     }
 
-    dataContaniner.classList.remove('hide');
-
+    dataContaniner.classList.remove('hidden');
+    document.querySelector('.forecast-container').classList.replace('w-1/4', 'w-3/4');
+    setSearch('');
     setWeatherData(data);
     changeBgImg(data.list[0].weather[0].main);
   }
@@ -48,7 +48,11 @@ function App() {
   }
 
   useEffect(() => {
-    latitude && longitude && getWeatherDataWhenUserAllowsGeoLocation(latitude, longitude);
+    if (latitude && longitude) {
+      getWeatherDataWhenUserAllowsGeoLocation(latitude, longitude)
+    } else {
+      setBgImgClassName('bg-sun');
+    }
   }, [latitude, longitude]);
 
   const changeBgImg = (weather) => {
@@ -67,11 +71,11 @@ function App() {
         break;
     }
   }
-
+  
 
   return (
-    <div className="main-container  flex items-center justify-center max-w-screen min-h-screen py-10">
-      <div className='forecast-container grid grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 w-3/4 rounded-3xl shadow-lg bg-gray-100'>
+    <div className="main-container flex items-center justify-center max-w-screen min-h-screen py-10">
+      <div className='forecast-container flex w-1/4 rounded-3xl shadow-lg bg-gray-100'>
         <div className={`form-container  ${bgImgClassName}`}>
           <div className='flex items-center justify-center'>
             <h3 className='my-auto mr-auto text-xl text-white font-bold shadow-md py-1 px-3 rounded-md bg-white bg-opacity-30'>
@@ -91,6 +95,7 @@ function App() {
                 className='input relative rounded-xl py-2 px-3 bg-gray-300 bg-opacity-60 text-white placeholder-gray-200'
                 onChange={(e) => setSearch(e.target.value)}
                 value={search}
+                placeholder={weatherData?.city.name ?? 'Type a city name...'}
                 required
               />
               <button type="submit" className='z-10' />
@@ -98,7 +103,7 @@ function App() {
             <p className='location-error items-center transition-all font-bold text-xl drop-shadow-sm justify-center mt-6 text-red-600 opacity-0'>Location not found</p>
           </div>
         </div>
-        <div className='data-container hide p-5'>
+        <div className='data-container hidden p-5'>
           <div className='flex flex-col'>
             {weatherData &&
               <>
@@ -116,6 +121,7 @@ function App() {
         </div>
       </div >
     </div >
+
   );
 }
 
