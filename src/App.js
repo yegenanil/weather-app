@@ -71,11 +71,11 @@ function App() {
         break;
     }
   }
-  
+
 
   return (
     <div className="main-container flex items-center justify-center max-w-screen min-h-screen py-10">
-      <div className='forecast-container flex w-1/4 rounded-3xl shadow-lg bg-gray-100'>
+      <div className='forecast-container flex flex-row sm:flex-row w-1/4 rounded-3xl xs:flex-col shadow-lg bg-gray-100'>
         <div className={`form-container  ${bgImgClassName}`}>
           <div className='flex items-center justify-center'>
             <h3 className='my-auto mr-auto text-xl text-white font-bold shadow-md py-1 px-3 rounded-md bg-white bg-opacity-30'>
