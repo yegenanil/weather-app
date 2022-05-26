@@ -8,6 +8,8 @@ You can view this project at https://weatherygn.netlify.app/
 ## Technologies
 Reactjs, Tailwind CSS
 
+You need to first get an API key -> https://openweathermap.org/
+
 # How to install
 
 1. Clone the project & enter the project directory
