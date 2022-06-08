@@ -6,7 +6,7 @@ You can view this project at https://weatherygn.netlify.app/
 <img src="https://user-images.githubusercontent.com/60621490/170032487-931365f8-e292-4a7c-a533-b523890a0c61.png" />
 
 ## Technologies
-Reactjs, Tailwind CSS
+React, Tailwind CSS
 
 You need to first get an API key -> https://openweathermap.org/
 
