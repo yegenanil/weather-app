@@ -1,5 +1,5 @@
 # Weather App
-A weather app in Reactjs using Open Weather API.
+A weather app in React using Open Weather API.
 
 You can view this project at https://weatherygn.netlify.app/
 
